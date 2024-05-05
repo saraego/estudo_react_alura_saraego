@@ -1,16 +1,6 @@
 import PropTypes from 'prop-types';
 import './styles.css';
-export const ListaSuspensa = ({ label, funcao }) => {
-  const times = [
-    'Programação',
-    'Front-end',
-    'Data Science',
-    'Inteligencia Artificial',
-    'DevOps',
-    'UX & Design',
-    'Mobile',
-    'Inovação & Gestão',
-  ];
+export const ListaSuspensa = ({ label,times, funcao }) => {
 
   const troca = (e) => {
     console.log(e.target.value);
@@ -33,6 +23,7 @@ export const ListaSuspensa = ({ label, funcao }) => {
 
 ListaSuspensa.propTypes = {
   label: PropTypes.string,
+  times: PropTypes.array,
   valor: PropTypes.string,
   funcao: PropTypes.func,
 };

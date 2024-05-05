@@ -5,7 +5,8 @@ import { CampoTexto } from '../CampoTexto';
 import { ListaSuspensa } from '../ListaSuspensa';
 import './styles.css';
 
-export const Formulario = () => {
+export const Formulario = ({ times }) => {
+  
   const [nome, setNome] = useState('');
   const [cargo, setCargo] = useState('');
   const [imagem, setImagem] = useState('');
@@ -17,12 +18,12 @@ export const Formulario = () => {
       nome,
       cargo,
       imagem,
-      time
+      time,
     };
 
-    setNome('')
-    setCargo('')
-    setImagem('')
+    setNome('');
+    setCargo('');
+    setImagem('');
     // setTime('')
     console.log(fucionario);
   };
@@ -49,7 +50,7 @@ export const Formulario = () => {
           valor={imagem}
           funcao={(valor) => setImagem(valor)}
         />
-        <ListaSuspensa label={'Time'} valor={time} funcao={(valor) => setTime(valor)} />
+        <ListaSuspensa label={'Time'} times={times} valor={time} funcao={(valor) => setTime(valor)} />
         <Botao />
       </form>
     </section>
@@ -57,6 +58,7 @@ export const Formulario = () => {
 };
 
 Formulario.propTypes = {
+  times: PropTypes.array,
   label: PropTypes.string,
   placeholder: PropTypes.string,
 };

@@ -8,3 +8,12 @@
   font-weight: 400;
   font-size: 28px;
 }
+.time .colaborador {
+  display: flex;
+  margin-top: 32px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  align-content: center;
+  flex-direction: row;
+}

@@ -5,8 +5,7 @@ import { CampoTexto } from '../CampoTexto';
 import { ListaSuspensa } from '../ListaSuspensa';
 import './styles.css';
 
-export const Formulario = ({ times }) => {
-  
+export const Formulario = ({ times, salvandoColaborador }) => {
   const [nome, setNome] = useState('');
   const [cargo, setCargo] = useState('');
   const [imagem, setImagem] = useState('');
@@ -14,18 +13,17 @@ export const Formulario = ({ times }) => {
 
   const teste = (e) => {
     e.preventDefault();
-    const fucionario = {
+    salvandoColaborador({
       nome,
       cargo,
       imagem,
       time,
-    };
+    });
 
     setNome('');
     setCargo('');
     setImagem('');
     // setTime('')
-    console.log(fucionario);
   };
 
   return (
@@ -59,6 +57,7 @@ export const Formulario = ({ times }) => {
 
 Formulario.propTypes = {
   times: PropTypes.array,
+  salvandoColaborador: PropTypes.func,
   label: PropTypes.string,
   placeholder: PropTypes.string,
 };

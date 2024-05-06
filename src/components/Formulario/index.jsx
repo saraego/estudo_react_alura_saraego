@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { v4 } from 'uuid';
 import { Botao } from '../Botao';
 import { CampoTexto } from '../CampoTexto';
 import { ListaSuspensa } from '../ListaSuspensa';
@@ -14,6 +15,7 @@ export const Formulario = ({ times, salvandoColaborador }) => {
   const teste = (e) => {
     e.preventDefault();
     salvandoColaborador({
+      id: v4(),
       nome,
       cargo,
       imagem,

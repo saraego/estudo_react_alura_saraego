@@ -1,58 +1,68 @@
 import { useState } from 'react';
+import { v4 } from 'uuid';
 import { Banner } from './components/Banner';
 import { Formulario } from './components/Formulario';
 import { Time } from './components/Time';
 
 function App() {
   const [colaboradores, setColaboradores] = useState([]);
-  const times = [
+  const [times, setTimes] = useState([
     {
-      id: 1,
+      id: v4(),
       nome: 'Programação',
-      corPrimaria: '#57C278',
-      corSecundaria: '#D9F7E9',
+      cor: '#57C278',
     },
     {
-      id: 2,
+      id: v4(),
       nome: 'Front-end',
-      corPrimaria: '#82CFFA',
-      corSecundaria: '#E8F8FF',
+      cor: '#82CFFA',
     },
     {
-      id: 3,
+      id: v4(),
       nome: 'Data Science',
-      corPrimaria: '#A6D157',
-      corSecundaria: '#F0F8E2',
+      cor: '#A6D157',
     },
     {
-      id: 4,
+      id: v4(),
       nome: 'DevOps',
-      corPrimaria: '#E06B69',
-      corSecundaria: '#FDE7E8',
+      cor: '#E06B69',
     },
     {
-      id: 5,
+      id: v4(),
       nome: 'UX & Design',
-      corPrimaria: '#DB6EBF',
-      corSecundaria: '#FAE9F5',
+      cor: '#DB6EBF',
     },
     {
-      id: 6,
+      id: v4(),
       nome: 'Mobile',
-      corPrimaria: '#FFBA05',
-      corSecundaria: '#FFF5D9',
+      cor: '#FFBA05',
     },
     {
-      id: 7,
+      id: v4(),
       nome: 'Inovação e Gestão',
-      corPrimaria: '#FF8A29',
-      corSecundaria: '#FFEEDF',
+      cor: '#FF8A29',
     },
-  ];
+  ]);
+
   const funcao = (colaborador) => {
     setColaboradores([...colaboradores, colaborador]);
   };
+  const deletaColaborador = (id) => {
+    console.log(id);
+   console.log(colaboradores);
+   setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id))
+  };
 
+  const mudarCorDoTime = (cor, id) => {
+    setTimes(
+      times.map((time) => {
+        if (time.id === id) {
+          time.cor = cor;
+        }
+        return time;
+      })
+    );
+  };
   return (
     <>
       <div>
@@ -65,9 +75,12 @@ function App() {
           <Time
             key={time.id}
             nome={time.nome}
-            corPrimaria={time.corPrimaria}
-            corSecundaria={time.corSecundaria}
+            cor={time.cor}
+            id={time.id}
+            // corSecundaria={time.corSecundaria}
             colaborador={colaboradores.filter((colaborador) => colaborador.time === time.nome)}
+            aoDeletar={deletaColaborador}
+            mudarCor={mudarCorDoTime}
           />
         ))}
       </div>

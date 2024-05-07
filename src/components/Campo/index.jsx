@@ -1,18 +1,19 @@
 import PropTypes from 'prop-types';
 import './styles.css';
-export const CampoTexto = ({ label, placeholder, valor, funcao }) => {
+
+export const Campo = ({ type = 'text', label, placeholder, valor, funcao }) => {
   const caputura = (e) => {
     funcao(e.target.value);
   };
   return (
-    <div className="campo_texto">
+    <div className={`campo campo-${type}`}>
       <label htmlFor="">{label}</label>
-      <input onChange={caputura} type="text" placeholder={placeholder} value={valor} />
+      <input type={type} value={valor} onChange={caputura} placeholder={placeholder} />
     </div>
   );
 };
 
-CampoTexto.propTypes = {
+Campo.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   valor: PropTypes.string,

@@ -1,4 +1,4 @@
 import './styles.css';
-export const Botao = () => {
-  return <button className="botao">Criar card</button>;
+export const Botao = (props) => {
+  return <button className="botao">{props.children}</button>;
 };

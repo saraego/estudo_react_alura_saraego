@@ -48,3 +48,7 @@
 .deletar:active {
   transform: scale(0.97);
 }
+
+.favoritar{
+  cursor: pointer;
+}

@@ -1,7 +1,26 @@
 import PropTypes from 'prop-types';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { IoIosHeartEmpty, IoMdHeart } from 'react-icons/io';
 import './styles.css';
-export const Colaboradores = ({ nome, cargo, imagem, id, corPrimaria, aoDeletar }) => {
+
+export const Colaboradores = ({
+  nome,
+  cargo,
+  imagem,
+  id,
+  corPrimaria,
+  aoDeletar,
+  favoritoFalse,
+  aoFavoritar,
+}) => {
+  const favoritar = () => {
+    aoFavoritar(id);
+  };
+
+  const props = {
+    size: 25,
+    onClick: favoritar,
+  };
   return (
     <div className="colaboradores">
       <AiFillCloseCircle size={25} className="deletar" onClick={() => aoDeletar(id)} />
@@ -11,6 +30,9 @@ export const Colaboradores = ({ nome, cargo, imagem, id, corPrimaria, aoDeletar 
       <div className="rodape">
         <h4>{nome}</h4>
         <h5>{cargo}</h5>
+        <div className="favoritar">
+          {favoritoFalse ? <IoMdHeart color='#ff0000' {...props} /> : <IoIosHeartEmpty {...props} />}
+        </div>
       </div>
     </div>
   );

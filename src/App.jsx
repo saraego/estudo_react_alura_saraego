@@ -49,8 +49,8 @@ function App() {
   };
   const deletaColaborador = (id) => {
     console.log(id);
-   console.log(colaboradores);
-   setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id))
+    console.log(colaboradores);
+    setColaboradores(colaboradores.filter((colaborador) => colaborador.id !== id));
   };
 
   const mudarCorDoTime = (cor, id) => {
@@ -63,11 +63,28 @@ function App() {
       })
     );
   };
+
+  const cadastrarTime = (novoTime) => {
+    setTimes([...times, novoTime]);
+  };
+
+  const resolverFavorito = (id) => {
+    console.log(id);
+    console.log('favoritou');
+    setColaboradores(
+      colaboradores.map((colaborador) => {
+        if (colaborador.id === id) colaborador.favorito = !colaborador.favorito;
+        return colaborador;
+      })
+    );
+  };
+  console.log(colaboradores);
   return (
     <>
       <div>
         <Banner />
         <Formulario
+          cadastrarTime={cadastrarTime}
           times={times.map((time) => time.nome)}
           salvandoColaborador={(colaborador) => funcao(colaborador)}
         />
@@ -78,9 +95,12 @@ function App() {
             cor={time.cor}
             id={time.id}
             // corSecundaria={time.corSecundaria}
-            colaborador={colaboradores.filter((colaborador) => colaborador.time === time.nome)}
+            colaborador={colaboradores.filter(
+              (colaborador) => colaborador.time === time.nome
+            )}
             aoDeletar={deletaColaborador}
             mudarCor={mudarCorDoTime}
+            aoFavoritar={resolverFavorito}
           />
         ))}
       </div>

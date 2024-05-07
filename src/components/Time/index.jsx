@@ -3,11 +3,16 @@ import PropTypes from 'prop-types';
 import { Colaboradores } from '../Colaborador';
 import './styles.css';
 
-export const Time = ({ nome, id, cor, colaborador, aoDeletar, mudarCor }) => {
+export const Time = ({ nome, id, cor, colaborador, aoDeletar, mudarCor, aoFavoritar }) => {
   return (
     colaborador.length > 0 && (
       <section className="time" style={{ backgroundColor: hexToRgba(cor, '0.4') }}>
-        <input value={cor} onChange={(e) => mudarCor(e.target.value, id)} type="color" className="input-cor" />
+        <input
+          value={cor}
+          onChange={(e) => mudarCor(e.target.value, id)}
+          type="color"
+          className="input-cor"
+        />
         <h3 style={{ borderColor: cor }}>{nome}</h3>
         <div className="colaborador">
           {colaborador.map((colab) => (
@@ -19,6 +24,8 @@ export const Time = ({ nome, id, cor, colaborador, aoDeletar, mudarCor }) => {
               corPrimaria={cor}
               imagem={colab.imagem}
               aoDeletar={aoDeletar}
+              aoFavoritar={aoFavoritar}
+              favoritoFalse={colab.favorito}
             />
           ))}
         </div>
